@@ -32,13 +32,13 @@ documentation on js_of_ocaml). If we did, *qrscanner* will be set to **undefined
 because the *QRScanner* javascript object doesn't exist when we create
 the variable.
 
-Instead, we provide a function *Qrscanner.qrscanner* of type unit -> QRScanner.qrscanner
+Instead, we provide a function *Qr_scanner.qr_scanner* of type unit -> Qr_scanner.qr_scanner
 Js.t which does the binding when you call it.
 So, use
 
 ```OCaml
-let on_device_ready =
-  let c = Qrscanner.qrscanner () in
+let on_device_ready _ =
+  let c = Qr_scanner.qr_scanner () in
   (* Some code *)
 
 let _ =

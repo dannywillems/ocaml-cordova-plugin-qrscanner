@@ -54,7 +54,7 @@ let error_name_to_msg e =
   doesn't exist or is otherwise unable to be configured."
   | Open_settings_unavailable -> "The device is unable to open settings."
 
-(* Error javascript object, used by some callbacks in qrscanner object *)
+(* Error javascript object, used by some callbacks in qr_scanner object *)
 type error =
   <
     _message                        : Js.js_string Js.t Js.readonly_prop ;
@@ -64,7 +64,7 @@ type error =
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-(* Status javascript object, used by some callbacks in qrscanner object *)
+(* Status javascript object, used by some callbacks in qr_scanner object *)
 type status =
   <
     authorized                      : bool Js.readonly_prop ;
@@ -83,7 +83,7 @@ type status =
 
 (* -------------------------------------------------------------------------- *)
 (* Define the front and back camear with a sum type. Can be used for useCamera
- * method on qrscanner object to type. Don't forget to use camera_to_int to
+ * method on qr_scanner object to type. Don't forget to use camera_to_int to
  * apply it to useCamera
  *)
 type camera =
@@ -96,11 +96,11 @@ let camera_to_int c = match c with
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-(* qrscanner javascript object
+(* qr_scanner javascript object
  * error in callbacks are of type error Js.opt because if everything went
  * right, error is set to null.
  *)
-class type qrscanner =
+class type qr_scanner =
   object
     method prepare          :   (error Js.opt -> status -> unit) -> unit Js.meth
     method scan             :   (error Js.opt -> Js.js_string Js.t -> unit) -> unit Js.meth
@@ -121,5 +121,5 @@ class type qrscanner =
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-let qrscanner () = Js.Unsafe.js_expr ("QRScanner")
+let qr_scanner () = Js.Unsafe.js_expr ("QRScanner")
 (* -------------------------------------------------------------------------- *)

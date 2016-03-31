@@ -13,7 +13,7 @@ val code_to_error_name : int -> error_name
 (* Get the message corresponding to the error name *)
 val error_name_to_msg : error_name -> string
 
-(* Error javascript object, used by some callbacks in qrscanner object *)
+(* Error javascript object, used by some callbacks in qr_scanner object *)
 type error =
   < _message                        : Js.js_string Js.t Js.readonly_prop ;
     code                            : int Js.readonly_prop ;
@@ -22,7 +22,7 @@ type error =
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-(* Status javascript object, used by some callbacks in qrscanner object *)
+(* Status javascript object, used by some callbacks in qr_scanner object *)
 type status =
   <
     authorized                      : bool Js.readonly_prop ;
@@ -41,7 +41,7 @@ type status =
 
 (* -------------------------------------------------------------------------- *)
 (* Define the front and back camear with a sum type. Can be used for useCamera
- * method on qrscanner object to type. Don't forget to use camera_to_int to
+ * method on qr_scanner object to type. Don't forget to use camera_to_int to
  * apply it to useCamera
  *)
 type camera
@@ -49,11 +49,11 @@ val camera_to_int : camera -> int
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-(* qrscanner javascript object
+(* qr_scanner javascript object
  * error in callbacks are of type error Js.opt because if everything went
  * right, error is set to null.
  *)
-class type qrscanner =
+class type qr_scanner =
   object
     method prepare          :   (error Js.opt -> status -> unit) -> unit Js.meth
     method scan             :   (error Js.opt -> Js.js_string Js.t -> unit) -> unit Js.meth
@@ -74,5 +74,5 @@ class type qrscanner =
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-val qrscanner : unit -> qrscanner Js.t
+val qr_scanner : unit -> qr_scanner Js.t
 (* -------------------------------------------------------------------------- *)
