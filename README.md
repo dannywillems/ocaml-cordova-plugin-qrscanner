@@ -40,18 +40,13 @@ but we **recommend** to use the gen_js_api version which is the master branch.
 The device plugin creates a new object called *QRScanner*, but the object is
 available when the *deviceready* event is handled.
 
-We don't provide a *qrscanner* variable in this plugin (as said in the official
-documentation on js_of_ocaml). If we did, *qrscanner* will be set to **undefined**
-because the *QRScanner* javascript object doesn't exist when we create
-the variable.
-
-Instead, we provide a function *Qrscanner.t* of type unit -> QRScanner.qrscanner
-Js.t which does the binding when you call it.
-So, use
+We provide a function *Qr_scanner.t* of type unit -> Qr_scanner.qr_scanner
+which does the binding when you call it.
+So, use (with js_of_ocaml)
 
 ```OCaml
 let on_device_ready _ =
-  let qr = Qrscanner.t () in
+  let qr = Qr_scanner.t () in
   (* Some code *)
 
 let _ =
