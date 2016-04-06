@@ -8,7 +8,7 @@ CMO_FILE		= $(patsubst %.mli, %.cmo, $(MLI_FILE))
 
 all: $(ML_FILE)
 
-$(ML_FILE): $(MLI_FILE)
+%.ml: %.mli
 	ocamlfind gen_js_api/gen_js_api $<
 	ocamlfind $(CC) -c $(PACKAGES) $<
 	ocamlfind $(CC) -c $(PACKAGES) $@
