@@ -1,5 +1,7 @@
 # ocaml-cordova-plugin-qrscanner
 
+* gen_js_api (master branch): [![Build Status](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-qrscanner.svg?branch=master)](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-qrscanner)
+
 **Currently iOS only.**
 
 Binding to
