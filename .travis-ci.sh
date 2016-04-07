@@ -14,7 +14,8 @@
 
 set -o nounset                              # Treat unset variables as an error
 
-OPAM_PKGS="gen_js_api"
+URL=https://github.com/dannywillems/ocaml-cordova-plugin-qrscanner.git
+PLUGIN_PIN=cordova-plugin-qrscanner
 
 export OPAMYES=1
 
@@ -30,7 +31,14 @@ if [ -n "${OPAM_SWITCH}" ]; then
 fi
 eval `opam config env`
 
-opam install $OPAM_PKGS
-
 export OCAMLRUNPARAM=b
-make
+
+# Test for make and make clean
+make && make clean
+
+# Test for make install and make remove
+make install && make remove && make clean
+
+# Test for the pin and -package
+opam pin add ${PLUGIN_PIN} ${URL}
+ocamlfind ocamlc -c -o test.cmo -package gen_js_api -package ${PLUGIN_PIN} -linkpkg test/test.ml
