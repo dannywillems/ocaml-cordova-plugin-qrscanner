@@ -1,8 +1,4 @@
-################################################################################
-MLI_FILE		= cordova_qr_scanner.mli
-## Name which will be used in -package with ocamlfind
-LIB_NAME		= cordova-plugin-qrscanner
-################################################################################
+include Makefile.conf
 
 ################################################################################
 CC				= ocamlc
