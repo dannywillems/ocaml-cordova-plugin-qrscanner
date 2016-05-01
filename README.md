@@ -35,7 +35,7 @@ but we **recommend** to use the gen_js_api version which is the master branch.
 
 Don't forget to switch to a compiler **>= 4.03.0**.
 ```Shell
-opam switch 4.03.0+beta1
+opam switch 4.03.0
 ```
 
 You can use opam by pinning the repository with
