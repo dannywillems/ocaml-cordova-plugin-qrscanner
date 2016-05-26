@@ -59,22 +59,3 @@ cordova plugin add cordova-plugin-qrscanner
 * TODO
 * See the official documentation
 [cordova-plugin-qrscanner](https://github.com/apache/cordova-plugin-qrscanner)
-
-## ! BE CAREFUL !
-
-The device plugin creates a new object called *QRScanner*, but the object is
-available when the *deviceready* event is handled.
-
-We provide a function *Cordova_qr_scanner.t* of type unit -> Cordova_qr_scanner.qr_scanner
-which does the binding when you call it.
-So, use (with js_of_ocaml)
-
-```OCaml
-let on_device_ready _ =
-  let qr = Cordova_qr_scanner.t () in
-  (* Some code *)
-
-let _ =
-  Dom.addEventListener Dom_html.document (Dom.Event.make "deviceready")
-  (Dom_html.handler on_device_ready) Js._false
-```
