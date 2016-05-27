@@ -19,3 +19,6 @@ env:
 cache:
   directories:
   - $HOME/.opam
+
+git:
+  depth: 1
