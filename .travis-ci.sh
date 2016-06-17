@@ -33,12 +33,10 @@ eval `opam config env`
 
 export OCAMLRUNPARAM=b
 
+opam install ocamlfind gen_js_api
+
 # Test for make and make clean
 make && make clean
 
 # Test for make install and make remove
 make install && make remove && make clean
-
-# Test for the pin and -package
-opam pin add ${PLUGIN_PIN} ${URL}
-ocamlfind ocamlc -c -o test.cmo -package gen_js_api -package ${PLUGIN_PIN} -linkpkg test/test.ml
